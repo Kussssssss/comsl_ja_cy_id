@@ -77,6 +77,14 @@ if __name__ == "__main__":
 
     callback_list = [checkpoint_callback, LearningRateMonitor(logging_interval="step")]
 
+    print("-" * 50)
+    
+    print(cfg)
+    print(joined_data_pair_lists)
+    print(sep_data_pair_lists)
+    
+    print("-" * 50)
+
     model = Module(cfg, joined_data_pair_lists, sep_data_pair_lists)
 
     if cfg.use_deepspeed:
@@ -99,6 +107,8 @@ if __name__ == "__main__":
         callbacks=callback_list,
         # strategy=strategy,
     )
+
+    print("Model: ", model)
 
     if cfg.test_ckpt_name is not None:
         trainer.test(model, ckpt_path=f"{ckpt_dir}/{cfg.test_ckpt_name}")

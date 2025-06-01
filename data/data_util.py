@@ -20,7 +20,7 @@ def load_data_record(data_root, split, language_list, subsample_rate=1,
         data_pair = read_table(os.path.join(data_root, 'covost',
                                             f"{data_lang_code}_en", f"covost_v2.{data_lang_code}_en.{split}.tsv"))
         data_pair['src_lang'] = lang
-        data_pair['tgt_lang'] = 'en'
+        data_pair['tgt_lang'] = 'english'
         data_pair['audio_root'] = os.path.join(data_root, 'extracted', data_lang_code, 'clips')
         data_pair = data_pair.dropna()
         data_pair_lists.append(data_pair)
@@ -35,7 +35,7 @@ def load_data_record(data_root, split, language_list, subsample_rate=1,
                 [expanded_data_pair, data_pair, data_pair, test_data_pair, test_data_pair, dev_data_pair,
                  dev_data_pair], ignore_index=True).drop_duplicates(subset=['path'], keep=False)
             expanded_data_pair['src_lang'] = lang
-            expanded_data_pair['tgt_lang'] = 'en'
+            expanded_data_pair['tgt_lang'] = 'english'
             expanded_data_pair['audio_root'] = os.path.join(expanded_data_root, data_lang_code, 'clips')
             data_pair_lists.append(expanded_data_pair)
             print(f"Loaded {len(expanded_data_pair)} {lang} to english extra data pairs.")
