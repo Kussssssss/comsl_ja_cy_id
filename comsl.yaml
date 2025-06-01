@@ -1,0 +1,32 @@
+module_name: "comsl"
+data_root: "data"
+cv_data_root: "data/cv"
+output_dir: "output/comsl_mn2en"
+train_name: "comsl_mn2en"
+train_id: "1"
+monitor: "bleu"
+ckpt_name: "checkpoint-{epoch:02d}-{step}"
+num_nodes: 1
+language_list: ["mn", "en"]
+extra_language_list: ["mn", "en"]
+sample_rate: 16000
+valid_sample_rate: 4
+mode: "train"
+use_acti_ckpt: true
+use_deepspeed: false
+ds_loss_scale: 1.0
+test_ckpt_name: null
+chunk_size: 11
+warmup_steps: 5000
+learning_rate: 1e-5
+adam_epsilon: 1e-6
+adam_betas: [0.9, 0.98]
+weight_decay: 0.1
+lr_pow: 2.0
+lr_end: 1e-7
+spch_n_layers: -1
+erm_layer: 4
+p_mask: 0.15
+disable_spch_grad_epoch: 0
+num_train_epochs: 10
+gradient_accumulation_steps: 1 
