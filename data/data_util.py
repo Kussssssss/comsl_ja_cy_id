@@ -23,8 +23,8 @@ def load_data_record(data_root, split, language_list, subsample_rate=1,
         data_pair['src_lang'] = lang
         data_pair['tgt_lang'] = 'english'
         
-        # Path to audio files
-        data_pair['audio_root'] = os.path.join(data_root, 'clips')
+        # Path to audio files - use split-specific directory
+        data_pair['audio_root'] = os.path.join(data_root, f'clips_{split}')
         data_pair = data_pair.dropna()
         data_pair_lists.append(data_pair)
         print(f"Loaded {len(data_pair)} {lang} to english data pairs.")
