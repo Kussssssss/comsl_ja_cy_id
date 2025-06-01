@@ -96,7 +96,7 @@ class CascadeModelModule(LightningModule):
             for metric in v:
                 metric.set_dtype(torch.float32)
 
-    def test_step(self, batch, batch_id, dataloader_idx):
+    def test_step(self, batch, batch_id=None, dataloader_idx=None):
         input_ids = batch["input_ids"]
         src_langs = batch["src_langs"]
         tgt_lang = batch["tgt_lang"]
@@ -127,7 +127,7 @@ class CascadeModelModule(LightningModule):
             'l_list': l_list,
         }
 
-    def test_epoch_end(self, outputs):
+    def on_test_epoch_end(self):
         bleu_scores = [b.compute() * 100 for b in self.test_metrics['bleu']]
         for i, bleu in enumerate(bleu_scores):
             self.log(f"test_bleu_{i}", round(bleu.item(), 2))
@@ -182,6 +182,6 @@ if __name__ == "__main__":
 
                 test_res = module.test_step(b, 0, 0)
                 print(test_res)
-                module.test_epoch_end([test_res])
+                module.on_test_epoch_end([test_res])
 
                 break

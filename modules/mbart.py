@@ -24,6 +24,7 @@ from model.model_util import load_mbart_tokenizer
 from model.mBART_model import MbartModel
 from criterion.metric_util import get_segment_tokenizers, preprocess_sentence
 
+
 class MbartCollatorWhithPadding:
     def __call__(self, features):
         enc_input_ids, labels, dec_input_ids, tgt_lang = [], [], [], []
@@ -86,7 +87,7 @@ class MbartModelModule(LightningModule):
     def forward(self, x):
         return self.model(x)
 
-    def training_step(self, batch, batch_id):
+    def training_step(self, batch, batch_id=None):
         input_ids = batch["enc_input_ids"]
         bsz = input_ids.size(0)
         labels = batch["labels"].long()
@@ -104,7 +105,7 @@ class MbartModelModule(LightningModule):
             for metric in v:
                 metric.set_dtype(torch.float32)
 
-    def validation_step(self, batch, batch_id, dataloader_idx=None):
+    def validation_step(self, batch, batch_id=None, dataloader_idx=None):
         input_ids = batch["enc_input_ids"]
         labels = batch["labels"].long()
         dec_input_ids = batch["dec_input_ids"].long()
@@ -136,7 +137,7 @@ class MbartModelModule(LightningModule):
             "l_list": l_list,
         }
 
-    def validation_epoch_end(self, outputs):
+    def on_validation_epoch_end(self):
         loss_scores = [l.compute() for l in self.valid_metrics['loss']]
         self.log('valid_loss_epoch', torch.mean(torch.tensor(loss_scores)))
         print("valid_loss_epoch", torch.mean(torch.tensor(loss_scores)))
@@ -182,7 +183,7 @@ class MbartModelModule(LightningModule):
             "label": l_list_,
         }
 
-    def test_epoch_end(self, outputs):
+    def on_test_epoch_end(self):
         bleu_scores = [b.compute() * 100 for b in self.test_metrics['bleu']]
         for i, bleu in enumerate(bleu_scores):
             self.log(f"test_bleu_{i}", round(bleu.item(), 2))
@@ -275,10 +276,10 @@ if __name__ == "__main__":
 
             valid_res = module.validation_step(b, 0, 0)
             print(valid_res)
-            module.validation_epoch_end([valid_res])
+            module.on_validation_epoch_end([valid_res])
 
             test_res = module.test_step(b, 0, 0)
             print(test_res)
-            module.test_epoch_end([test_res])
+            module.on_test_epoch_end([test_res])
 
             break

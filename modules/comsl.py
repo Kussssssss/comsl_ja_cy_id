@@ -208,7 +208,7 @@ class ComSTModule(LightningModule):
             for m in metric_list:
                 m.set_dtype(torch.float32)
 
-    def test_step(self, batch, batch_idx, dataloader_idx=None):
+    def test_step(self, batch, batch_idx=None, dataloader_idx=None):
         if dataloader_idx is None:
             print("warning: dataloader_idx is None")
             dataloader_idx = 0
@@ -233,7 +233,7 @@ class ComSTModule(LightningModule):
         return decode_res
 
     # def test_epoch_end(self, outputs):
-    def test_epoch_end(self):
+    def on_test_epoch_end(self):
         for metric_name, metric_list in self.test_metrics.items():
             results = [m.compute() for m in metric_list]
             if 'bleu' in metric_name:
@@ -380,6 +380,6 @@ if __name__ == "__main__":
 
             test_res = module.test_step(b, 0, 0)
             print(test_res)
-            module.test_epoch_end([test_res])
+            module.on_test_epoch_end([test_res])
 
             break
