@@ -1,14 +1,14 @@
 module_name: "comsl"
 data_root: "data"
 cv_data_root: "data/cv"
-output_dir: "output/comsl_mn2en"
-train_name: "comsl_mn2en"
+output_dir: "output/comsl_id2en"
+train_name: "comsl_id2en"
 train_id: "1"
 monitor: "bleu"
 ckpt_name: "checkpoint-{epoch:02d}-{step}"
 num_nodes: 1
-language_list: ["mn", "en"]
-extra_language_list: ["mn", "en"]
+language_list: ["id", "en"]
+extra_language_list: ["id", "en"]
 sample_rate: 16000
 valid_sample_rate: 4
 mode: "train"
