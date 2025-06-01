@@ -2,28 +2,24 @@ module_name: comst
 train_name: ComST
 train_id: default
 
-use_deepspeed: true
+use_deepspeed: false
 use_acti_ckpt: false
-num_nodes: 4
+num_nodes: 1
 monitor: val_bleu_spch_epoch
 ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
-# data_root: /mnt/c/ComSL/mongolia_dataset
-data_root: /kaggle/input/dataset-mongolia
-cv_data_root: null # được sử dụng nếu bạn muốn sử dụng thêm “pseudo data” hoặc bổ sung dữ liệu ngoài CoVoST2
-# output_dir: /mnt/c/ComSL/output/comsl_mn2en
-/kaggle/working/comsl/output/comsl_mn2en
+data_root: /kaggle/working/comsl_ja_cy_id/indonesia_dataset 
+cv_data_root: null
+output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_id2en
 
 warmup_steps: 5000
 batch_size: 1
 test_batch_size: 1
-num_worker: 3
-# num_train_epochs: 
-num_train_epochs: 15
-gradient_accumulation_steps: 1
-chunk_size: 11
+num_worker: 4
+num_train_epochs: 10
+gradient_accumulation_steps: 4
+chunk_size: 5
 
 # whisper model
-# whisper_name: small
 whisper_name: tiny
 spch_n_layers: 24
 disable_spch_grad_epoch: 5
@@ -48,12 +44,11 @@ cml_loss_weight: 0.1
 use_erm: true
 erm_loss_weight: 0.2
 
-# model path relative to cache_dir
 language_regularization_model_path: null
 language_init_model_path: null
 spch_init_model_path: null
 
-avail_lang: 
+avail_lang: # sửa ở đây
 # - french
 # - german
 # - spanish
@@ -75,35 +70,3 @@ avail_lang:
 # - slovenian
 # - welsh
 # - catalan
-
-# avail_lang_extra: 
-# - french
-# - german
-# - spanish
-# - italian
-# - russian
-# - chinese
-# - portuguese
-# - persian
-# - estonian
-# - mongolian
-# - dutch
-# - turkish
-# - arabic
-# - swedish
-# - latvian
-# - tamil
-# - japanese
-# - indonesian
-# - slovenian
-# - welsh
-# - catalan
-
-
-
-
-
-
-
-
-
