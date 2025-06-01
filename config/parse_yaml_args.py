@@ -174,7 +174,7 @@ def _parse_args_and_yaml(given_parser=None, config_path=None):
         given_parser = default_config_parser
     given_configs, remaining = given_parser.parse_known_args()
     file_name = given_configs.config if "yaml" in given_configs.config else given_configs.config + ".yaml"
-    config_path = file_name if config_path is None else config_path
+    config_path = "config/exp_spec/" + file_name if config_path is None else config_path
     with open(config_path, 'r', encoding='utf-8') as f:
         cfg = yaml.safe_load(f)
         given_parser.set_defaults(**cfg)
