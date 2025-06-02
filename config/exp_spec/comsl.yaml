@@ -7,9 +7,9 @@ use_acti_ckpt: false
 num_nodes: 1
 monitor: val_bleu_spch_epoch
 ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
-data_root: /kaggle/input/japan-dataset/japan_dataset
+data_root: /kaggle/input/welsh-dataset/welsh_dataset
 cv_data_root: null # được sử dụng nếu bạn muốn sử dụng thêm “pseudo data” hoặc bổ sung dữ liệu ngoài CoVoST2
-output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_ja2en
+output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_cy2en
 
 warmup_steps: 5000
 batch_size: 1
@@ -65,8 +65,8 @@ avail_lang: # sửa ở đây
 # - swedish
 # - latvian
 # - tamil
-- japanese
+# - japanese
 # - indonesian
 # - slovenian
-# - welsh
+- welsh
 # - catalan
