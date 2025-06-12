@@ -9,6 +9,12 @@ from data.data_util import LANG_DICT
 from config.parse_yaml_args import parse_args_and_yaml
 from model.model_util import load_mbart_model, load_mbart_tokenizer
 
+import warnings
+warnings.filterwarnings("ignore", message="dataloader_idx is None")
+warnings.filterwarnings("ignore")
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=UserWarning)
+
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 class MbartDataset(torch.utils.data.Dataset):
