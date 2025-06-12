@@ -8,7 +8,7 @@ num_nodes: 1
 monitor: val_bleu_spch_epoch
 ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
 data_root: /kaggle/input/japan-dataset/japan_dataset
-cv_data_root: cv-corpus-11.0-2022-09-21 # được sử dụng nếu bạn muốn sử dụng thêm “pseudo data” hoặc bổ sung dữ liệu ngoài CoVoST2
+cv_data_root: /kaggle/input/japan-dataset/japan_dataset
 output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_ja2en
 
 warmup_steps: 5000
