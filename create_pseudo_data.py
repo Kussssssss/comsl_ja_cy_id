@@ -67,7 +67,7 @@ class MbartCollatorWhithPadding:
 
 cfg = parse_args_and_yaml(config_path="config/exp_spec/mbart.yaml")
 
-CV_root = r"./cv-corpus-11.0-2022-09-21" 
+CV_root = r"japan_dataset" 
 data_language = "japanese"  # TODO: set your data language, e.g. 'french', 'chinese'
 cfg.mbart_model_path = "facebook/mbart-large-50-many-to-many-mmt"  # TODO: set your mBART model path to your pretrained model
 output_dir = f"{CV_root}/pseudo"
