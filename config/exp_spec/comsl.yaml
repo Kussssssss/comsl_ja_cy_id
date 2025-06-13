@@ -7,9 +7,9 @@ use_acti_ckpt: false
 num_nodes: 1
 monitor: val_bleu_spch_epoch
 ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
-data_root: /kaggle/input/japan-dataset/japan_dataset
-cv_data_root: /kaggle/input/japan-dataset/japan_dataset
-output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_ja2en
+data_root: /kaggle/input/indonesia-dataset/indonesia_dataset
+cv_data_root: /kaggle/input/indonesia-dataset/indonesia_dataset
+output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_id2en
 
 warmup_steps: 5000
 batch_size: 1
