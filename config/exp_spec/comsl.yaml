@@ -65,8 +65,8 @@ avail_lang: # sửa ở đây
 # - swedish
 # - latvian
 # - tamil
-- japanese
-# - indonesian
+# - japanese
+- indonesian
 # - slovenian
 # - welsh
 # - catalan
@@ -89,8 +89,8 @@ avail_lang_extra:
 # - swedish
 # - latvian
 # - tamil
-- japanese
-# - indonesian
+# - japanese
+- indonesian
 # - slovenian
 # - welsh
 # - catalan
