@@ -101,6 +101,10 @@ if __name__ == "__main__":
         data_pair_list = data_pair.to_dict("records")
         print(f"Loaded {len(data_pair)} {data_language} to english {split} data pairs.")
 
+        max_translation_count = 120  # Set số lượng samples muốn dịch
+        data_pair_list = data_pair_list[:max_translation_count]
+        print(f"Translating first {len(data_pair_list)} data pairs.")
+
         dataset = MbartDataset(data_pair_list)
         collecter = MbartCollatorWhithPadding(mbart_tokenizer, src_lang=data_language)
         dataloader = DataLoader(

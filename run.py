@@ -11,6 +11,12 @@ from config.parse_yaml_args import parse_args_and_yaml
 from data.data_util import load_data_record
 from modules import get_module
 
+import warnings
+warnings.filterwarnings("ignore", message="dataloader_idx is None")
+warnings.filterwarnings("ignore")
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=UserWarning)
+
 os.environ["TORCH_DISTRIBUTED_DEBUG"] = "INFO"
 
 cfg = parse_args_and_yaml()
