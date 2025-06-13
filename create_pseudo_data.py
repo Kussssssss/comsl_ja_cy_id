@@ -98,7 +98,7 @@ if __name__ == "__main__":
         )
         output_data_pair = data_pair.copy()[["path", "sentence"]]
         output_data_pair["translation"] = None
-        data_pair_list = data_pair.to_dict("records")
+        data_pair_list = data_pair.to_dict("records")[:120]
         print(f"Loaded {len(data_pair)} {data_language} to english {split} data pairs.")
 
         dataset = MbartDataset(data_pair_list)
