@@ -8,7 +8,7 @@ num_nodes: 1
 monitor: val_bleu_spch_epoch
 ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
 data_root: /kaggle/input/welsh-dataset/welsh_dataset
-cv_data_root: null # được sử dụng nếu bạn muốn sử dụng thêm “pseudo data” hoặc bổ sung dữ liệu ngoài CoVoST2
+cv_data_root: /kaggle/input/welsh-dataset/welsh_dataset
 output_dir: /kaggle/working/comsl_ja_cy_id/output/comsl_cy2en
 
 warmup_steps: 5000
@@ -49,6 +49,29 @@ language_init_model_path: null
 spch_init_model_path: null
 
 avail_lang: # sửa ở đây
+# - french
+# - german
+# - spanish
+# - italian
+# - russian
+# - chinese
+# - portuguese
+# - persian
+# - estonian
+# - mongolian
+# - dutch
+# - turkish
+# - arabic
+# - swedish
+# - latvian
+# - tamil
+# - japanese
+# - indonesian
+# - slovenian
+- welsh
+# - catalan
+
+avail_lang_extra: 
 # - french
 # - german
 # - spanish
