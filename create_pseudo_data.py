@@ -76,7 +76,7 @@ cfg = parse_args_and_yaml(config_path="config/exp_spec/mbart.yaml")
 CV_root = r"cv-corpus-11.0-2022-09-21-id/cv-corpus-11.0-2022-09-21" 
 data_language = "indonesian"  # TODO: set your data language, e.g. 'french', 'chinese'
 cfg.mbart_model_path = "facebook/mbart-large-50-many-to-many-mmt"  # TODO: set your mBART model path to your pretrained model
-output_dir = f"/kaggle/working/comsl_ja_cy_id/{CV_root}/pseudo"
+output_dir = f"/kaggle/working/comsl_ja_cy_id/{CV_root}/psudo"
 
 mbart_tokenizer = load_mbart_tokenizer(cfg)
 mbart_model = load_mbart_model(cfg)
